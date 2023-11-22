@@ -173,7 +173,7 @@ Rigidbody2D:
   m_LinearDrag: 0.1
   m_AngularDrag: 4
   m_GravityScale: 0.8
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 99d1279530c85be4bb7a85ef3b0c7637, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -244,9 +244,11 @@ MonoBehaviour:
   landedOnRestaurant: 0
   hasCargo: 0
   cargo: {fileID: 2118691027202437083, guid: 25e6c1f9e94be8d42b212f7827dafbe2, type: 3}
+  onFuelStation: 0
   thrust: 40
   boost: 30
   torque: 40
+  angularDrag: 0
 --- !u!114 &1109415516540691758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,12 +262,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
-  onFuelStation: 0
   currentFuel: 0
   fuelDrainRate: 0
-  defaultDrainRate: 0
-  boostDrainRate: 0
-  fuelFillRate: 0
+  fuelDrainStarted: 0
+  fuelFillStarted: 0
 --- !u!114 &5314696549618462722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22e29c86ef68d34ca32b23fbe60c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyUI: {fileID: 0}
   currentMoney: 35
 --- !u!114 &8433524009603568206
 MonoBehaviour:

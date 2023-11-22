@@ -482,7 +482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496960019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.2048845, y: -7.3, z: 0}
+  m_LocalPosition: {x: -5.137884, y: -7.3, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
   m_Father: {fileID: 1872658384}
@@ -736,7 +736,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.326706, y: -3.2298021, z: -10}
+  m_LocalPosition: {x: 45.876705, y: -1.9798012, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2043275850}
@@ -1052,7 +1052,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753194774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.885325, y: -4.23, z: 0}
+  m_LocalPosition: {x: -10.684326, y: -4.23, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
   m_Father: {fileID: 1872658384}
@@ -2285,14 +2285,14 @@ MonoBehaviour:
   sounds:
   - name: Thrust
     clip: {fileID: 8300000, guid: d4cc53d4ef92cd741a07e5bf9ee2b97d, type: 3}
-    volume: 1
-    pitch: 0.51
+    volume: 0.85
+    pitch: 0.5
     loop: 1
     source: {fileID: 0}
   - name: Boost
     clip: {fileID: 8300000, guid: d4cc53d4ef92cd741a07e5bf9ee2b97d, type: 3}
-    volume: 1
-    pitch: 1.48
+    volume: 0.85
+    pitch: 1.5
     loop: 1
     source: {fileID: 0}
 --- !u!4 &1376942269
@@ -43040,12 +43040,12 @@ PrefabInstance:
     - target: {fileID: 6201271865871328620, guid: 94a2e483863d25242a53b730d6bed482,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.77
+      value: -2.22
       objectReference: {fileID: 0}
     - target: {fileID: 6201271865871328620, guid: 94a2e483863d25242a53b730d6bed482,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.95
+      value: 16.2
       objectReference: {fileID: 0}
     - target: {fileID: 6201271865871328620, guid: 94a2e483863d25242a53b730d6bed482,
         type: 3}
@@ -43736,7 +43736,7 @@ PrefabInstance:
     - target: {fileID: 4425991253637081110, guid: 9fd97f3fc490f564eaf57e1ebe3b1838,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.66
+      value: 21.25
       objectReference: {fileID: 0}
     - target: {fileID: 4425991253637081110, guid: 9fd97f3fc490f564eaf57e1ebe3b1838,
         type: 3}

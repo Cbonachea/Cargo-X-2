@@ -63,6 +63,8 @@ public class Crash : MonoBehaviour
     }   
     private void Explode()
     {
+        ship_rb.angularDrag = 0.1f;
+        ship_rb.AddTorque(150f);
         GameEvents.current.Crash();
         Debug.Log("ALERT CATASTROPHIC DISASTER DETECTED");
     }
@@ -75,13 +77,18 @@ public class Crash : MonoBehaviour
     {
         while (currentDamageTimer > 0)
         {
+            FindObjectOfType<AudioManager>().Stop("Thrust");
+            FindObjectOfType<AudioManager>().Stop("Boost");
             shipControl.canControl = false;
             currentDamageTimer--;
-            GameEvents.current.EngineOn();
-            GameEvents.current.Yaw_R();
+            ship_rb.angularDrag = 0.1f;
+            ship_rb.AddTorque(90f);
+            //GameEvents.current.EngineOn();
+            //GameEvents.current.Yaw_R();
             yield return new WaitForSeconds(.5f);
         }
-        
+
+        ship_rb.angularDrag = 4f;
         shipControl.canControl = true;
         currentDamageTimer = damageTimer;
         checkingCrash = false;

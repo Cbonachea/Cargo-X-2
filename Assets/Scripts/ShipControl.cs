@@ -39,9 +39,9 @@ public class ShipControl : MonoBehaviour
     [SerializeField] private float thrust = 40f;
     [SerializeField] private float boost = 30f;
     [SerializeField] private float torque = 40f;
+    [SerializeField] private float angularDrag = 0f;
 
     //private AreaEffector2D rocketBlast;
-
 
     private void Start()
     {
@@ -97,45 +97,46 @@ public class ShipControl : MonoBehaviour
     void FixedUpdate()
     {
         if (!canControl) return;
+        {
+            if (thrusting)
             {
-                if (thrusting)
-                {
-                    ship_rb.AddForce(transform.up * thrust);
-                    //rocketBlast.enabled = true;
-                    FindObjectOfType<AudioManager>().Play("Thrust");
-                }
-
-                if (!thrusting)
-                {
-                    FindObjectOfType<AudioManager>().Stop("Thrust");
-                    //rocketBlast.enabled = false;
-                }
-
-                if (boosting)
-                {
-                    ship_rb.AddForce(transform.up * (thrust + boost));
-                    //rocketBlast.enabled = true;
-                    FindObjectOfType<AudioManager>().Play("Boost");
-                }
-
-                if (!boosting)
-                {
-                    //rocketBlast.enabled = false;
-                    FindObjectOfType<AudioManager>().Stop("Boost");
-                }
-
-                if (yaw_R == true) { ship_rb.AddTorque(-torque * Mathf.Deg2Rad, ForceMode2D.Impulse); }
-
-                if (yaw_L == true) { ship_rb.AddTorque(torque * Mathf.Deg2Rad, ForceMode2D.Impulse); }
-
-                if (deploy == true && hasCargo == true && !landedOnRestaurant)
-                {
-                    cargo_rb.isKinematic = false;
-                    cargo_rb.velocity = ship_rb.velocity;
-                    hasCargo = false;
-                    canLoadCargo = true;
-                }
+                ship_rb.AddForce(transform.up * thrust);
+                //rocketBlast.enabled = true;
+                FindObjectOfType<AudioManager>().Play("Thrust");
             }
+
+            if (!thrusting)
+            {
+                FindObjectOfType<AudioManager>().Stop("Thrust");
+                //rocketBlast.enabled = false;
+            }
+
+            if (boosting)
+            {
+                ship_rb.AddForce(transform.up * (thrust + boost));
+                //rocketBlast.enabled = true;
+                FindObjectOfType<AudioManager>().Play("Boost");
+            }
+
+            if (!boosting)
+            {
+                //rocketBlast.enabled = false;
+                FindObjectOfType<AudioManager>().Stop("Boost");
+            }
+
+            if (yaw_R == true) { ship_rb.AddTorque(-torque * Mathf.Deg2Rad, ForceMode2D.Impulse); }
+
+            if (yaw_L == true) { ship_rb.AddTorque(torque * Mathf.Deg2Rad, ForceMode2D.Impulse); }
+
+            if (deploy == true && hasCargo == true && !landedOnRestaurant)
+            {
+                cargo_rb.isKinematic = false;
+                cargo_rb.velocity = ship_rb.velocity;
+                hasCargo = false;
+                canLoadCargo = true;
+                GameEvents.current.CargoDrop();
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
