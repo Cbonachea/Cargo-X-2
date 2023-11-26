@@ -184,9 +184,20 @@ public class ShipControl : MonoBehaviour
     private void Explode()
     {
         canControl = false;
+        StartCoroutine(ExplosionDelayCoroutine());
         FindObjectOfType<AudioManager>().Stop("Thrust");
         FindObjectOfType<AudioManager>().Stop("Boost");
     }
+
+    IEnumerator ExplosionDelayCoroutine()
+    {
+        FindObjectOfType<AudioManager>().Play("Crash");
+        yield return new WaitForSeconds(1);
+        FindObjectOfType<AudioManager>().Play("Explode");
+        FindObjectOfType<AudioManager>().Play("Crash");
+        Destroy(gameObject);
+    }
+
 
     private void Thrust()
     {
@@ -231,7 +242,7 @@ public class ShipControl : MonoBehaviour
     private void SubscribeGameEvents()
     {
         //GameEvents.current.onCargoLoad += CreateCargo;
-        GameEvents.current.onCrash += Explode;
+        GameEvents.current.onExplode += Explode;
         GameEvents.current.onEngineOn += Thrust;
         GameEvents.current.onEngineBoost += Boost;     
         GameEvents.current.onEngineOff += Thrust_Idle;        
@@ -249,7 +260,7 @@ public class ShipControl : MonoBehaviour
     private void OnDestroy()
     {
         //GameEvents.current.onCargoLoad -= CreateCargo;
-        GameEvents.current.onCrash -= Explode;
+        GameEvents.current.onExplode -= Explode;
         GameEvents.current.onEngineOn -= Thrust;        
         GameEvents.current.onEngineBoost -= Boost;
         GameEvents.current.onEngineOff -= Thrust_Idle;

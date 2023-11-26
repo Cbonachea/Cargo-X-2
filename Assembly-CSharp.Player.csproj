@@ -680,6 +680,7 @@
     <Compile Include="Assets\Scripts\GameEvents.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Indicator.cs" />
+    <Compile Include="Assets\Scripts\LaunchPad.cs" />
     <Compile Include="Assets\Scripts\Money.cs" />
     <Compile Include="Assets\Scripts\ParallaxBackground.cs" />
     <Compile Include="Assets\Scripts\ParallaxCamera.cs" />

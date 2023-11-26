@@ -30,7 +30,7 @@ TagManager:
   - Antenna
   - Ship
   - wind
-  - 
+  - StartUp
   - 
   - 
   - 
@@ -59,21 +59,24 @@ TagManager:
   - name: Building
     uniqueID: 2553672761
     locked: 0
-  - name: Ground
-    uniqueID: 1781545031
-    locked: 0
   - name: Debris
     uniqueID: 4042867341
     locked: 0
   - name: Antenna
     uniqueID: 413849267
     locked: 0
-  - name: UI
-    uniqueID: 3526259661
-    locked: 0
   - name: Cargo
     uniqueID: 3277984751
     locked: 0
   - name: Ship
     uniqueID: 3662556383
+    locked: 0
+  - name: Ground
+    uniqueID: 1781545031
+    locked: 0
+  - name: LaunchPad
+    uniqueID: 1046654679
+    locked: 0
+  - name: UI
+    uniqueID: 3526259661
     locked: 0

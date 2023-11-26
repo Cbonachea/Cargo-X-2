@@ -12,8 +12,8 @@ public class Crash : MonoBehaviour
     float speed;
     private bool checkingCrash;
 
-    private int damageTimer = 5;
-    private int currentDamageTimer = 5;
+    private int damageTimer = 3;
+    private int currentDamageTimer = 3;
 
     private ShipControl shipControl;
 
@@ -65,12 +65,13 @@ public class Crash : MonoBehaviour
     {
         ship_rb.angularDrag = 0.1f;
         ship_rb.AddTorque(150f);
-        GameEvents.current.Crash();
+        GameEvents.current.Explode();
         Debug.Log("ALERT CATASTROPHIC DISASTER DETECTED");
     }
 
     private void TakeDamage()
     {
+        FindObjectOfType<AudioManager>().Play("Crash");
         StartCoroutine(TakeDamageCoroutine());
     }
     private IEnumerator TakeDamageCoroutine()
