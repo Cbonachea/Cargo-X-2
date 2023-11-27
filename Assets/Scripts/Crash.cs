@@ -9,6 +9,7 @@ public class Crash : MonoBehaviour
     private int ship_HP = 3;
     private Rigidbody2D ship_rb;
     [SerializeField] private float crashTolerance;
+    [SerializeField] private float instantKillSpeed;
     float speed;
     private bool checkingCrash;
 
@@ -35,12 +36,21 @@ public class Crash : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(speed > crashTolerance)
+        if(speed < crashTolerance) FindObjectOfType<AudioManager>().Play("SoftCrash");
+        if (speed > crashTolerance)
         {
             Debug.Log("Crashed");
             CheckCrash();
             //animator.SetBool("isCracked", true);
         }
+        if(speed > instantKillSpeed)
+        {
+            ship_rb.angularDrag = 0f;
+            ship_rb.AddTorque(150f);
+            GameEvents.current.InstantExplode();
+            Debug.Log("ALERT CATASTROPHIC DISASTER DETECTED");
+        }
+
     }
 
     private void CheckCrash()

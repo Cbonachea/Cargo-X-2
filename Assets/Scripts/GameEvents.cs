@@ -27,6 +27,7 @@ public class GameEvents : MonoBehaviour
     public event Action onTakeDamage;
     public event Action onCrash;
     public event Action onExplode;
+    public event Action onInstantExplode;
     public event Action onDeploy_Input;
     public event Action onDeploy_Input_Idle;
 
@@ -160,6 +161,13 @@ public class GameEvents : MonoBehaviour
         if (onExplode != null)
         {
             onExplode();
+        }
+    }        
+    public void InstantExplode()
+    {
+        if (onInstantExplode != null)
+        {
+            onInstantExplode();
         }
     }        
     public void Thrust()

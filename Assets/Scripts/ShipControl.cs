@@ -187,12 +187,21 @@ public class ShipControl : MonoBehaviour
         StartCoroutine(ExplosionDelayCoroutine());
         FindObjectOfType<AudioManager>().Stop("Thrust");
         FindObjectOfType<AudioManager>().Stop("Boost");
+    }    
+    private void InstantExplode()
+    {
+        canControl = false;
+        FindObjectOfType<AudioManager>().Stop("Thrust");
+        FindObjectOfType<AudioManager>().Stop("Boost");
+        FindObjectOfType<AudioManager>().Play("Explode");
+        FindObjectOfType<AudioManager>().Play("Crash");
+        Destroy(gameObject);
     }
 
     IEnumerator ExplosionDelayCoroutine()
     {
         FindObjectOfType<AudioManager>().Play("Crash");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2.5f);
         FindObjectOfType<AudioManager>().Play("Explode");
         FindObjectOfType<AudioManager>().Play("Crash");
         Destroy(gameObject);
@@ -243,6 +252,7 @@ public class ShipControl : MonoBehaviour
     {
         //GameEvents.current.onCargoLoad += CreateCargo;
         GameEvents.current.onExplode += Explode;
+        GameEvents.current.onInstantExplode += InstantExplode;
         GameEvents.current.onEngineOn += Thrust;
         GameEvents.current.onEngineBoost += Boost;     
         GameEvents.current.onEngineOff += Thrust_Idle;        
@@ -261,6 +271,7 @@ public class ShipControl : MonoBehaviour
     {
         //GameEvents.current.onCargoLoad -= CreateCargo;
         GameEvents.current.onExplode -= Explode;
+        GameEvents.current.onInstantExplode -= InstantExplode;
         GameEvents.current.onEngineOn -= Thrust;        
         GameEvents.current.onEngineBoost -= Boost;
         GameEvents.current.onEngineOff -= Thrust_Idle;

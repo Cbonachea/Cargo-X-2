@@ -15,6 +15,7 @@ public class LaunchPad : MonoBehaviour
         endPosition = 7.15f;
         SubscribeGameEvents();
         launchPad = GetComponent<Transform>();
+        StartUp();
     }
 
 
