@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TargetIndicator : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Image spriteRendererUI;
     [SerializeField] private GameObject targetIndicator;
 
 
@@ -22,11 +24,13 @@ public class TargetIndicator : MonoBehaviour
     private void ActivateIndicator()
     {
         spriteRenderer.enabled = true;
+        spriteRendererUI.enabled = true;
     }
 
     private void DeactivateIndicator()
     {
         spriteRenderer.enabled = false;
+        spriteRendererUI.enabled = false;
     }
 
 

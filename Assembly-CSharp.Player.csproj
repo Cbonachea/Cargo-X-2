@@ -688,6 +688,7 @@
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\SetDeliveryTarget.cs" />
     <Compile Include="Assets\Scripts\ShipControl.cs" />
+    <Compile Include="Assets\Scripts\ShipUI.cs" />
     <Compile Include="Assets\Scripts\Smoke.cs" />
     <Compile Include="Assets\Scripts\SmokeGeneratorScript.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
