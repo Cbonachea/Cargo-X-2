@@ -22,7 +22,7 @@ public class FuelSystem : MonoBehaviour
 
     private void Start()
     {
-        currentFuel = 100f;
+        currentFuel = 85f;
         defaultDrainRate = .09f;
         boostDrainRate = .11f;
         fuelFillRate = .4f;

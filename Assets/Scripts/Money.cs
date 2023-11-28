@@ -7,7 +7,7 @@ public class Money : MonoBehaviour
 {
     [SerializeField] private Text moneyUI;
 
-    [SerializeField] internal float currentMoney = 35;
+    [SerializeField] internal float currentMoney = 1.25f;
     
     private float payout;
     internal float fuelPrice;
@@ -30,7 +30,8 @@ public class Money : MonoBehaviour
 
         if (currentMoney >= fuelPrice) canBuyFuel = true;
 
-        moneyUI.text = currentMoney.ToString();
+        currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
+        moneyUI.text = ("$" + currentMoney.ToString());
     }
 
     internal void Payout()

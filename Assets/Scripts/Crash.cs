@@ -36,7 +36,7 @@ public class Crash : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(speed < crashTolerance) FindObjectOfType<AudioManager>().Play("SoftCrash");
+        //if(speed < crashTolerance) FindObjectOfType<AudioManager>().Play("SoftCrash");
         if (speed > crashTolerance)
         {
             Debug.Log("Crashed");

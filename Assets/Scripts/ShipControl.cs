@@ -67,7 +67,13 @@ public class ShipControl : MonoBehaviour
         if (landedOnRestaurant && canLoadCargo) LoadCargo();
         if (onFuelStation) CheckCashFlow();
         if (canAffordFuel && !fuelTankFull && onFuelStation) canPumpFuel = true;
-        if (!canAffordFuel || fuelTankFull || !onFuelStation) canPumpFuel = false;
+        if (!canAffordFuel || fuelTankFull || !onFuelStation)
+        {
+            canPumpFuel = false;
+            GameEvents.current.FuelFill_Idle();
+        }
+        //if (canPumpFuel) fuelToolTip.enabled = true;
+        //if (!canPumpFuel) fuelToolTip.enabled = false;
     }
 
     private void CheckFuelTankLevel()
