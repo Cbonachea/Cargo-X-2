@@ -5,6 +5,7 @@ using UnityEngine;
 public class SetDeliveryTarget : MonoBehaviour
 {
 
+    [SerializeField] internal SpriteRenderer loaded;
     [SerializeField] internal GameObject[] residences;
     [SerializeField] internal GameObject deliveryTarget;
     [SerializeField] internal bool targetSet;
@@ -33,6 +34,7 @@ public class SetDeliveryTarget : MonoBehaviour
         index = Random.Range(0, residences.Length);
         deliveryTarget = residences[index];
         deliveryTarget.tag = "deliveryTarget";
+        loaded.enabled = true;
         Debug.Log("Residence Target index " + index);
         Debug.Log("Delivery Target Set");
         //GameEvents.current.CargoLoad();
@@ -42,6 +44,7 @@ public class SetDeliveryTarget : MonoBehaviour
     {
         deliveryTarget.tag = "Residence";
         targetSet = false;
+        loaded.enabled = false;
         canSetTarget = true;
     }
 
