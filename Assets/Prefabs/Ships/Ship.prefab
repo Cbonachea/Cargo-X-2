@@ -9802,6 +9802,8 @@ MonoBehaviour:
   landedOnRestaurant: 0
   hasCargo: 0
   cargo: {fileID: 2118691027202437083, guid: 25e6c1f9e94be8d42b212f7827dafbe2, type: 3}
+  explosionPrefab: {fileID: 1087073375467392101, guid: 27732beaabee84167a3c6eafbd633ece,
+    type: 3}
   onFuelStation: 0
   thrust: 40
   boost: 30
@@ -9864,6 +9866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyUI: {fileID: 0}
   currentMoney: 35
+  totalMoney: 0
 --- !u!114 &8433524009603568206
 MonoBehaviour:
   m_ObjectHideFlags: 0

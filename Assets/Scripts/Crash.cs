@@ -20,11 +20,11 @@ public class Crash : MonoBehaviour
     private ShipControl shipControl;
 
 
-
     void Start()
     {
         ship_rb = gameObject.GetComponent<Rigidbody2D>();
         shipControl = gameObject.GetComponent<ShipControl>();
+
         //animator = gameObject.GetComponent<Animator>();
     }
 

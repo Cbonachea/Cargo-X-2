@@ -11,6 +11,7 @@ public class ShipControl : MonoBehaviour
     private FuelSystem fuelSystem;
     private Money money;
     private GameManager gameManager;
+    private ExplosionAnimation explosionAnimation;
 
     internal bool canControl = true;
     [SerializeField] private bool canLoadCargo = true;
@@ -20,6 +21,7 @@ public class ShipControl : MonoBehaviour
     private Rigidbody2D ship_rb;
     private Transform ship_Transform;
     [SerializeField] private GameObject cargo;
+    [SerializeField] private GameObject explosionPrefab;
     private Transform cargo_Transform;
     private Rigidbody2D cargo_rb;
     private Transform cargoDropLocation;
@@ -50,6 +52,7 @@ public class ShipControl : MonoBehaviour
         fuelSystem = GetComponent<FuelSystem>();
         money = GetComponent<Money>();
         gameManager = gameObject.GetComponent<GameManager>();
+        explosionAnimation = gameObject.GetComponent<ExplosionAnimation>();
         ship_Transform = GetComponent<Transform>();
         ship_rb = GetComponent<Rigidbody2D>();
         cargoDropLocation = GetComponent<Transform>();
@@ -220,7 +223,10 @@ public class ShipControl : MonoBehaviour
     private void DestroyShipNow()
     {
         //gameManager.ResetGame();
-        //GameEvents.current.ShipDestroyed();    
+        //GameEvents.current.ShipDestroyed();   
+        var newExplosion = Instantiate(explosionPrefab, ship_Transform);
+        newExplosion.transform.parent = null;
+        newExplosion.transform.Rotate(0, 0, Random.Range(-30, 30));
         Destroy(gameObject);
     }
 
