@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Crash : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Crash : MonoBehaviour
     private int currentDamageTimer = 3;
 
     private ShipControl shipControl;
+
 
 
     void Start()

@@ -8,6 +8,7 @@ public class SetDeliveryTarget : MonoBehaviour
     [SerializeField] internal SpriteRenderer loaded;
     [SerializeField] internal GameObject[] residences;
     [SerializeField] internal GameObject deliveryTarget;
+    [SerializeField] internal GameObject tempTarget;
     [SerializeField] internal bool targetSet;
     [SerializeField] internal bool canSetTarget = true;
     internal int index;
@@ -32,6 +33,7 @@ public class SetDeliveryTarget : MonoBehaviour
         if (targetSet) return;
         targetSet = true;
         index = Random.Range(0, residences.Length);
+
         deliveryTarget = residences[index];
         deliveryTarget.tag = "deliveryTarget";
         loaded.enabled = true;
@@ -43,6 +45,7 @@ public class SetDeliveryTarget : MonoBehaviour
     private void UnSetTarget()
     {
         deliveryTarget.tag = "Residence";
+        deliveryTarget = tempTarget;
         targetSet = false;
         loaded.enabled = false;
         canSetTarget = true;

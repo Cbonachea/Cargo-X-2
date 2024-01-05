@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class Money : MonoBehaviour
 {
     [SerializeField] private Text moneyUI;
-
     [SerializeField] internal float currentMoney = 1.25f;
-    
+    [SerializeField] internal float totalMoney;
+
     private float payout;
     internal float fuelPrice;
     private bool buyingFuel;
@@ -18,6 +18,7 @@ public class Money : MonoBehaviour
     {
         SubscribeGameEvents();
         fuelPrice = .45f;
+        totalMoney = currentMoney;
     }
 
     private void Update()
@@ -29,14 +30,17 @@ public class Money : MonoBehaviour
         }
 
         if (currentMoney >= fuelPrice) canBuyFuel = true;
-
-        currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
-        moneyUI.text = ("$" + currentMoney.ToString());
+        {
+            currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
+            moneyUI.text = ("$" + currentMoney.ToString());
+        }
     }
 
     internal void Payout()
     {
         payout = Random.Range(6.00f, 13.00f);
+        totalMoney += payout;
+        totalMoney = Mathf.Round(totalMoney * 100f) / 100f;
         currentMoney += payout;
     }
 

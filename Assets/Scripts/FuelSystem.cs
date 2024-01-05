@@ -52,14 +52,14 @@ public class FuelSystem : MonoBehaviour
     {
         fuelDrainStarted = true;
         StartCoroutine(FuelDrainCoroutine(fuelDrainRate));
-        Debug.Log("Fuel drain started");
+        //Debug.Log("Fuel drain started");
     }
     private void StopFuelDrain()
     {
         if (!fuelDrainStarted) return;
         fuelDrainStarted = false;
         StopCoroutine(FuelDrainCoroutine(fuelDrainRate));
-        Debug.Log("Fuel drain stopped");
+        //Debug.Log("Fuel drain stopped");
     }
 
     private void StartFuelFill()
@@ -67,14 +67,14 @@ public class FuelSystem : MonoBehaviour
         if (fuelFillStarted) return;
         fuelFillStarted = true;
         StartCoroutine(FuelFillCoroutine());
-        Debug.Log("Fuel fill started");
+        //Debug.Log("Fuel fill started");
     }    
     private void StopFuelFill()
     {
         if (!fuelFillStarted) return;
         fuelFillStarted = false;
         StopCoroutine(FuelFillCoroutine());
-        Debug.Log("Fuel fill stopped");
+        //Debug.Log("Fuel fill stopped");
     }
 
 

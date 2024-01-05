@@ -10,6 +10,7 @@ public class ShipControl : MonoBehaviour
     private SetDeliveryTarget setDeliveryTarget;
     private FuelSystem fuelSystem;
     private Money money;
+    private GameManager gameManager;
 
     internal bool canControl = true;
     [SerializeField] private bool canLoadCargo = true;
@@ -48,6 +49,7 @@ public class ShipControl : MonoBehaviour
         setDeliveryTarget = GetComponent<SetDeliveryTarget>();
         fuelSystem = GetComponent<FuelSystem>();
         money = GetComponent<Money>();
+        gameManager = gameObject.GetComponent<GameManager>();
         ship_Transform = GetComponent<Transform>();
         ship_rb = GetComponent<Rigidbody2D>();
         cargoDropLocation = GetComponent<Transform>();
@@ -201,7 +203,8 @@ public class ShipControl : MonoBehaviour
         FindObjectOfType<AudioManager>().Stop("Boost");
         FindObjectOfType<AudioManager>().Play("Explode");
         FindObjectOfType<AudioManager>().Play("Crash");
-        Destroy(gameObject);
+        
+        DestroyShipNow();
     }
 
     IEnumerator ExplosionDelayCoroutine()
@@ -210,9 +213,16 @@ public class ShipControl : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         FindObjectOfType<AudioManager>().Play("Explode");
         FindObjectOfType<AudioManager>().Play("Crash");
-        Destroy(gameObject);
+        
+        DestroyShipNow();
     }
 
+    private void DestroyShipNow()
+    {
+        //gameManager.ResetGame();
+        //GameEvents.current.ShipDestroyed();    
+        Destroy(gameObject);
+    }
 
     private void Thrust()
     {

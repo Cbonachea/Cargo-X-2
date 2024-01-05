@@ -7,6 +7,8 @@ public class FlameControl : MonoBehaviour
     private ShipControl shipControl;
 
     private Animator animator;
+    [SerializeField] internal ParticleSystem sparksRed;
+    [SerializeField] internal ParticleSystem sparksBlue;
     private bool thrust;
     private bool boost;
 
@@ -23,22 +25,28 @@ public class FlameControl : MonoBehaviour
         if (shipControl.canControl == false)
         {
             FlameOff();
+            sparksRed.Stop();
+            sparksBlue.Stop();
         }
-
         if (thrust)
         {
             animator.SetBool("isBoosting", false);
             animator.SetBool("isThrusting", true);
+            sparksRed.Play();
         }
         if (boost)
         {
             animator.SetBool("isThrusting", false);
             animator.SetBool("isBoosting", true);
+            sparksBlue.Play();
+            sparksRed.Play();
         }
         if (!thrust && !boost)
         {
             animator.SetBool("isThrusting", false);
             animator.SetBool("isBoosting", false);
+            sparksRed.Stop();
+            sparksBlue.Stop();
         }
 
     }
@@ -75,5 +83,4 @@ public class FlameControl : MonoBehaviour
         GameEvents.current.onEngineOff -= FlameOff;
         GameEvents.current.onEngineBoost -= BoostOn;
     }
-
 }
